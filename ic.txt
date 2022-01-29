@@ -1,0 +1,57 @@
+ATtiny2313
+
+ 1. pa2 ~rst/dw			<- rst
+ 2. pd0 rxd			-> d
+ 3. pd1 txd			-> c
+ 4. pa1 xt2			<> dht (+ ext pu)
+ 5. pa0 xt1			<> ds (is: nc) (+ ext pu)
+ 6. pd2 cko/xck/int0		-> e
+ 7. pd3 int1			-> b
+ 8. pd4 t0			-> g
+ 9. pd5 oc0b/t1			-> f
+10. gnd				-- gnd
+
+11. pd6 icp			-> a
+12. pb0 ain0/pci0		-> dp
+13. pb1 ain1/pci1		-> a3
+14. pb2 oc0a/pci2		-> a4
+15. pb3 oc1a/pci3		-> a1
+16. pb4 oc1b/pci4		-> a2
+17. pb5 mosi/di/sda/pci5	<- mosi (is: 1wire / ds) (remove ext pu)
+18. pb6 miso/do/pci6		-> miso
+19. pb7 usck/scl/pci7		<- sck
+20. vcc				<- vcc
+
+pa7	-	pu	p1	d0
+pa6	-	pu	p1	d0
+pa5	-	pu	p1	d0
+pa4	-	pu	p1	d0
+pa3	-	pu	p1	d0
+pa2	rst	pu	p1	d0
+pa1	dht	fl	p0	d0
+pa0	ds	fl	p0	d0
+			fc	00
+
+pb7	sck	pu	p1	d0
+pb6	miso	pu	p1	d0
+pb5	mosi	pu	p1	d0
+pb4	a2	lo	p0	d1
+pb3	a1	lo	p0	d1
+pb2	a4	lo	p0	d1
+pb1	a3	lo	p0	d1
+pb0	dp	hi	p1	d1
+			e1	1f
+
+pd7	-	pu	p1	d0
+pd6	a	hi	p1	d1
+pd5	f	hi	p1	d1
+pd4	g	hi	p1	d1
+pd3	b	hi	p1	d1
+pd2	e	hi	p1	d1
+pd1	c	hi	p1	d1
+pd0	d	hi	p1	d1
+			ff	7f
+
+fx: 0xff
+fh: 11001001 (wdt always on, bod 4.3 V) = 0xc9
+fl: 11000100 (internal 8 MHz) = 0xc4
